@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1708030433163,
+      "tag": "0000_bouncy_william_stryker",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708030568954,
+      "tag": "0001_safe_secret_warriors",
+      "breakpoints": true
+    }
+  ]
+}
