@@ -15,6 +15,13 @@
       "when": 1708030568954,
       "tag": "0001_safe_secret_warriors",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708031382254,
+      "tag": "0002_steep_masked_marvel",
+      "breakpoints": true
     }
   ]
 }
