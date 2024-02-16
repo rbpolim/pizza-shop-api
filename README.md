@@ -1,4 +1,4 @@
-# pizza-shop-api
+# Pizza Shop (API)
 
 Pizza Shop API where you can effortlessly create user profiles and restaurant listings 🍕✨
 
