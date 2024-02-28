@@ -1,3 +1,4 @@
+import { auth } from './auth'
 import { Elysia, t, type Static } from 'elysia'
 import cookie from '@elysiajs/cookie'
 import jwt from '@elysiajs/jwt'
@@ -17,7 +18,7 @@ export const auth = new Elysia()
     }),
   )
   .use(cookie())
-  .derive(({ setCookie, jwt, removeCookie }) => {
+  .derive(({ setCookie, jwt, removeCookie, cookie }) => {
     return {
       signUser: async (payload: Static<typeof jwtPayload>) => {
         const token = await jwt.sign(payload)
@@ -31,6 +32,19 @@ export const auth = new Elysia()
 
       signOutUser: () => {
         removeCookie('auth')
+      },
+
+      getCurrentUser: async () => {
+        const payload = await jwt.verify(cookie.auth)
+
+        if (!payload) {
+          throw new Error('User not authenticated')
+        }
+
+        return {
+          userId: payload.sub,
+          restaurantId: payload.restaurantId,
+        }
       },
     }
   })
