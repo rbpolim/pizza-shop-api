@@ -1,4 +1,3 @@
-import { auth } from './auth'
 import { Elysia, t, type Static } from 'elysia'
 import cookie from '@elysiajs/cookie'
 import jwt from '@elysiajs/jwt'
@@ -29,11 +28,9 @@ export const auth = new Elysia()
           path: '/',
         })
       },
-
       signOutUser: () => {
         removeCookie('auth')
       },
-
       getCurrentUser: async () => {
         const payload = await jwt.verify(cookie.auth)
 
