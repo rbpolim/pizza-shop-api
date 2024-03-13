@@ -2,6 +2,8 @@ import { text, timestamp, pgTable, integer } from 'drizzle-orm/pg-core'
 import { createId } from '@paralleldrive/cuid2'
 
 import { restaurants } from './restaurants'
+import { relations } from 'drizzle-orm'
+import { orderItems } from '.'
 
 export const products = pgTable('products', {
   id: text('id')
@@ -17,4 +19,15 @@ export const products = pgTable('products', {
     }),
   createdAt: timestamp('created_at').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow(),
+})
+
+export const productsRelations = relations(products, ({ one, many }) => {
+  return {
+    restaurant: one(restaurants, {
+      fields: [products.restaurantId],
+      references: [restaurants.id],
+      relationName: 'products_restaurant',
+    }),
+    orderItems: many(orderItems),
+  }
 })
